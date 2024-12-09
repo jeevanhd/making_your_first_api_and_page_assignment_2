@@ -1,5 +1,5 @@
 // Boilerplate Code for HTTP Status Code API
-const express = require('express');
+const express = require("express");
 const app = express();
 
 /*
@@ -50,7 +50,64 @@ List of Status Codes to Handle:
 200, 201, 204, 400, 401, 403, 404, 405, 429, 500, 502, 503, 504
 */
 
-const PORT = 3000;
+app.get("/", (req, res) => {
+  res.send("Please Navigate to /status-info?code=");
+});
+
+app.get("/status-info", (req, res) => {
+  const code = req.query.code;
+  let message = "";
+
+  switch (code) {
+    case "200":
+      message =
+        "OK: The request has succeeded. The meaning of this status depends on the HTTP method used.";
+      break;
+    case "201":
+      message =
+        "Created: The request has been fulfilled and resulted in one or more new resources being created.";
+      break;
+    case "204":
+      message =
+        "No Content: The server successfully processed the request and is not returning any content.";
+      break;
+    case "400":
+      message =
+        "Bad Request: The server cannot process the request due to client-side errors (e.g.,malformed syntax).";
+      break;
+    case "401":
+      message =
+        "Unauthorized: The request has not been applied because it lacks valid authentication credentials for the target resource.";
+      break;
+    case "403":
+      message =
+        "Forbidden: The server understood the request but refuses to authorize it.";
+      break;
+    case "404":
+      message = "Not Found: The server can not find the requested resource. ";
+      break;
+    case "405":
+      message =
+        "Method Not Allowed: The method received in the request is known by the origin server but not supported by the target resource.";
+      break;
+    case "429":
+      message =
+        "Too Many Requests: The user has sent too many requests in a given amount of time.";
+      break;
+    case "500":
+      message =
+        "Internal Server Error: The server encountered an unexpected condition that prevented it from fulfilling the request.";
+      break;
+    default:
+      message = "Unknown Status Code";
+  }
+  res.json({
+    code: code,
+    message: message,
+  });
+});
+
+const PORT = 8080;
 app.listen(PORT, () => {
-    console.log(`Status Code API is running on http://localhost:${PORT}`);
+  console.log(`Status Code API is running on http://localhost:${PORT}`);
 });

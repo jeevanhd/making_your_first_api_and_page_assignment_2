@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "The **HTTP Status Code API** is a tool to help developers learn and understand HTTP status codes. It allows users to input a status code and returns a detailed message about what the code means. This API is particularly useful for students, new developers, and anyone trying to master HTTP communication.",
   "dependencies": {
-    "express": "^4.21.1",
+    "express": "^4.21.2",
     "node": "^20.18.1"
-  }
+  },
+  "keywords": []
 }
